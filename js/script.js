@@ -28,8 +28,27 @@ const result = document.getElementById("result");
 
 calculateBtn.addEventListener("click", function () {
     const studentName = studentNameInput.value.trim();
+    const markValue = markInput.value.trim();
+
+    if (studentName ==="") {
+        result.innerText = "Please enter the student name.";
+        return;
+    }
+
+    if (markValue === "") {
+        result.innerText = "Please enter the mark. ";
+        return;
+    }
+
     const mark = Number(markInput.value);
+
+    if (mark < 0 || mark > 100) {
+        result.innerText = "Mark must be between 0 and 100.";
+        return;
+    }
     const grade = calculateGrade(mark);
+
+    
     result.innerText = `${studentName}, received grade ${grade}`;
 });
 
