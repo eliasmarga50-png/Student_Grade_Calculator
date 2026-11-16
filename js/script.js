@@ -30,6 +30,8 @@ const mark3Input = document.getElementById("mark3");
 const calculateBtn = document.getElementById("calculateBtn");
 const result = document.getElementById("result");
 
+const studentRecords = document.getElementById("studentRecords");
+
 calculateBtn.addEventListener("click", function () {
 
     const studentName = studentNameInput.value.trim();
@@ -44,17 +46,17 @@ calculateBtn.addEventListener("click", function () {
     }
 
     if (mark1Value === "") {
-        result.innerText = "Please enter the first subject mark.";
+        result.innerText = "Please enter the Mathematics mark.";
         return;
     }
 
     if (mark2Value === "") {
-        result.innerText = "Please enter the second subject mark.";
+        result.innerText = "Please enter the English mark.";
         return;
     }
 
     if (mark3Value === "") {
-        result.innerText = "Please enter the third subject mark.";
+        result.innerText = "Please enter the Biology mark.";
         return;
     }
 
@@ -64,35 +66,69 @@ calculateBtn.addEventListener("click", function () {
 
     if (
         !Number.isFinite(mark1) ||
-        !Number.isFinite(mark2) ||
-        !Number.isFinite(mark3)
+        mark1 < 0 ||
+        mark1 > 100
     ) {
-        result.innerText = "Please enter valid numbers for all subjects.";
+        result.innerText = "Mathematics mark must be between 0 and 100.";
         return;
     }
 
-
-    if (mark1 < 0 || mark1 > 100) {
-        result.innerText = "First subject mark must be between 0 and 100.";
+    if (
+        !Number.isFinite(mark2) ||
+        mark2 < 0 ||
+        mark2 > 100
+    ) {
+        result.innerText = "English mark must be between 0 and 100.";
         return;
     }
 
-    if (mark2 < 0 || mark2 > 100) {
-        result.innerText = "Second subject mark must be between 0 and 100.";
-        return;
-    }
-
-    if (mark3 < 0 || mark3 > 100) {
-        result.innerText = "Third subject mark must be between 0 and 100.";
+    if (
+        !Number.isFinite(mark3) ||
+        mark3 < 0 ||
+        mark3 > 100
+    ) {
+        result.innerText = "Biology mark must be between 0 and 100.";
         return;
     }
 
 
     const average = (mark1 + mark2 + mark3) / 3;
 
-    
+   
     const grade = calculateGrade(average);
 
+   
     result.innerText =
         `${studentName} received grade ${grade}. Average mark: ${average.toFixed(2)}.`;
+
+   
+    const newRow = document.createElement("tr");
+
+    
+    const nameCell = document.createElement("td");
+    const mark1Cell = document.createElement("td");
+    const mark2Cell = document.createElement("td");
+    const mark3Cell = document.createElement("td");
+    const averageCell = document.createElement("td");
+    const gradeCell = document.createElement("td");
+
+    
+    nameCell.textContent = studentName;
+    mark1Cell.textContent = mark1;
+    mark2Cell.textContent = mark2;
+    mark3Cell.textContent = mark3;
+    averageCell.textContent = average.toFixed(2);
+    gradeCell.textContent = grade;
+
+    
+    newRow.appendChild(nameCell);
+    newRow.appendChild(mark1Cell);
+    newRow.appendChild(mark2Cell);
+    newRow.appendChild(mark3Cell);
+    newRow.appendChild(averageCell);
+    newRow.appendChild(gradeCell);
+
+    
+    studentRecords.appendChild(newRow);
+
 });
