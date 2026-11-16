@@ -1,6 +1,6 @@
 
 function calculateGrade(mark) {
-    if (mark >= 90 && mark <= 100) {
+    if (mark >= 90) {
         return "A+";
     } else if (mark >= 85) {
         return "A";
@@ -22,33 +22,60 @@ function calculateGrade(mark) {
 }
 
 const studentNameInput = document.getElementById("studentName");
-const markInput = document.getElementById("mark");
+const mark1Input = document.getElementById("mark1");
+const mark2Input = document.getElementById("mark2");
+
 const calculateBtn = document.getElementById("calculateBtn");
+
 const result = document.getElementById("result");
 
 calculateBtn.addEventListener("click", function () {
-    const studentName = studentNameInput.value.trim();
-    const markValue = markInput.value.trim();
 
-    if (studentName ==="") {
+    const studentName = studentNameInput.value.trim();
+    const mark1Value = mark1Input.value.trim();
+    const mark2Value = mark2Input.value.trim();
+
+  
+    if (studentName === "") {
         result.innerText = "Please enter the student name.";
         return;
     }
 
-    if (markValue === "") {
-        result.innerText = "Please enter the mark. ";
+ 
+    if (mark1Value === "") {
+        result.innerText = "Please enter the first subject mark.";
         return;
     }
 
-    const mark = Number(markInput.value);
-
-    if (mark < 0 || mark > 100) {
-        result.innerText = "Mark must be between 0 and 100.";
+    // Validate second subject mark
+    if (mark2Value === "") {
+        result.innerText = "Please enter the second subject mark.";
         return;
     }
-    const grade = calculateGrade(mark);
+
+
+    const mark1 = Number(mark1Value);
+    const mark2 = Number(mark2Value);
+
+  
+    if (mark1 < 0 || mark1 > 100) {
+        result.innerText = "First subject mark must be between 0 and 100.";
+        return;
+    }
+
+  
+    if (mark2 < 0 || mark2 > 100) {
+        result.innerText = "Second subject mark must be between 0 and 100.";
+        return;
+    }
 
     
-    result.innerText = `${studentName}, received grade ${grade}`;
-});
+    const average = (mark1 + mark2) / 2;
 
+    
+    const grade = calculateGrade(average);
+
+    
+    result.innerText =
+        `${studentName} received grade ${grade}. Average mark: ${average.toFixed(2)}.`;
+});
