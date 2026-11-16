@@ -97,3 +97,15 @@ button:active {
         box-sizing: border-box;
     }
 }
+
+.result:empty {
+    display: none;
+}
+
+.result:before {
+    display:none;
+}
+
+.result:not(:empty) {
+    display: block;
+}
