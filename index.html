@@ -13,85 +13,148 @@
 
     <div class="container">
 
-        <h1>Student Grade Calculator</h1>
-
-   
-        <div class="input-group">
-            <label for="studentName">Student Name</label>
-            <input
-                type="text"
-                id="studentName"
-                placeholder="Enter student name"
-            >
-        </div>
-
-      
-        <div class="input-group">
-            <label for="mark1">Mathematics</label>
-            <input
-                type="number"
-                id="mark1"
-                placeholder="Enter mathematics mark"
-                min="0"
-                max="100"
-                step="any"
-            >
-        </div>
-
-    
-        <div class="input-group">
-            <label for="mark2">English</label>
-            <input
-                type="number"
-                id="mark2"
-                placeholder="Enter English mark"
-                min="0"
-                max="100"
-                step="any"
-            >
-        </div>
-
        
-        <div class="input-group">
-            <label for="mark3">Biology</label>
-            <input
-                type="number"
-                id="mark3"
-                placeholder="Enter Biology mark"
-                min="0"
-                max="100"
-                step="any"
-            >
-        </div>
+        <header class="page-header">
+            <h1>Student Grade Calculator</h1>
+            <p>Calculate student averages and determine their grades.</p>
+        </header>
 
         
-        <div id="result" class="result"></div>
+        <section class="calculator-card">
 
-        <button id="calculateBtn">Calculate Grade</button>
+            <h2>Student Information</h2>
 
-        <h2>Student Grade Records</h2>
+            <div class="input-group">
+                <label for="studentName">Student Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter student name"
+                >
+            </div>
 
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>WWeb Design</th>
-                        <th>Security</th>
-                        <th>tools</th>
-                        <th>Average</th>
-                        <th>Grade</th>
-                    </tr>
-                </thead>
+            <div class="input-group">
+                <label for="mark1">Web Design</label>
+                <input
+                    type="number"
+                    id="mark1"
+                    placeholder="Enter web design mark"
+                    min="0"
+                    max="100"
+                    step="any"
+                >
+            </div>
 
-                <tbody id="studentRecords">
+            <div class="input-group">
+                <label for="mark2">Software Security</label>
+                <input
+                    type="number"
+                    id="mark2"
+                    placeholder="Enter Software Security mark"
+                    min="0"
+                    max="100"
+                    step="any"
+                >
+            </div>
 
-                </tbody>
-            </table>
-        </div>
+            <div class="input-group">
+                <label for="mark3">Requirement Engineering</label>
+                <input
+                    type="number"
+                    id="mark3"
+                    placeholder="Enter Requirement Engineering mark"
+                    min="0"
+                    max="100"
+                    step="any"
+                >
+            </div>
+
+          
+            <div
+                id="result"
+                class="result"
+                aria-live="polite"
+            ></div>
+
+           
+            <div class="button-group">
+                <button id="calculateBtn" class="calculate-btn">
+                    Calculate Grade
+                </button>
+
+                <button id="clearFormBtn" class="clear-btn">
+                    Clear Form
+                </button>
+            </div>
+
+        </section>
+
+        
+        <section class="records-card">
+
+            <div class="records-header">
+                <div>
+                    <h2>Student Grade Records</h2>
+                    <p>All calculated student results.</p>
+                </div>
+
+                <button id="clearRecordsBtn" class="delete-btn">
+                    Clear Records
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Web Design</th>
+                            <th>Software Security</th>
+                            <th>Requirement Engineering</th>
+                            <th>Average</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentRecords">
+                        <tr id="emptyMessage">
+                            <td colspan="6">
+                                No student records available yet.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        
+        <section class="grading-card">
+
+            <h2>Grading Scale</h2>
+
+            <div class="grading-grid">
+                <div>A+ : 90–100</div>
+                <div>A : 85–89</div>
+                <div>A- : 80–84</div>
+                <div>B+ : 75–79</div>
+                <div>B : 70–74</div>
+                <div>B- : 65–69</div>
+                <div>C : 60–64</div>
+                <div>D : 50–59</div>
+                <div>F : 0–49</div>
+            </div>
+
+        </section>
+
+        
+        <footer>
+            <p>Student Grade Calculator | Built with HTML, CSS and JavaScript</p>
+        </footer>
 
     </div>
 
     <script src="js/script.js"></script>
+
 </body>
 </html>
